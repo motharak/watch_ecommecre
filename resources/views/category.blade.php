@@ -14,7 +14,7 @@
 				<div class="col-sm-3">
                 <div class="card shadow-sm">
 					<div class="single-feature">
-                    <img src="{{ asset('uploads/' . $item->Picture) }}" alt="feature image">
+                    <img src="{{ asset('uploads/' . $item->Picture)}}" width="400"alt="feature image">
                     <div class="single-feature-txt text-center">
                         <h3><a href="/product/{{$item->categoryName}}">{{$item->categoryName}}</a></h3>
                     </div>

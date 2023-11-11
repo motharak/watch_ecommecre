@@ -96,7 +96,7 @@ class CategoryController extends Controller
         $productModel = new CategoryModel();
         $productModel->deleteCategory($id);
         @unlink(public_path('uploads/' . $picture));
-        return redirect('/admin/category');
+        return redirect('/admin/product');
     }
     
    
