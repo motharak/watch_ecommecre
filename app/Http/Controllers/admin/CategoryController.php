@@ -87,6 +87,17 @@ class CategoryController extends Controller
         $productModel->updateCategory($txtId,$data);
         return redirect('/admin/category');
     }
+    public function delete($id, $picture)
+    {
+        session_start();
+        if (empty(session('username'))) {
+            return redirect('/admin/login');
+        }
+        $productModel = new CategoryModel();
+        $productModel->deleteCategory($id);
+        @unlink(public_path('uploads/' . $picture));
+        return redirect('/admin/category');
+    }
     
    
 }

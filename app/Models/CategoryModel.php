@@ -24,6 +24,10 @@ class CategoryModel {
     public function updateCategory($id,$data){
         return DB::table('caterories')->where('categoryNo',$id)->update($data);
     }
+    public function deleteCategory($id)
+    {
+        return DB::table('caterories')->where('categoryNo', $id)->delete();
+    }
 }
 
 

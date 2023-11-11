@@ -64,4 +64,5 @@ Route::post('/admin/product/update_action','App\Http\Controllers\admin\ProductCo
 
 Route::get('/admin/product/delete/{id}/{img}', 'App\Http\Controllers\Admin\ProductController@delete');
 Route::get('/admin/users/delete/{id}/{img}','App\Http\Controllers\admin\UserController@delete');
+Route::get('/admin/category/delete/{id}/{img}','App\Http\Controllers\admin\CategoryController@delete');
 
