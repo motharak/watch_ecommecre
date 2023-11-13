@@ -15,11 +15,11 @@
                 <img src="{{ asset('uploads/'.$product->Picture) }}" alt="{{ $product->Picture }}" class="img-thumbnail">
             </div>
             <div class="col-md-8">
-                <h4>Deskripsi:</h4>
+                <h4>Description:</h4>
                 <p>{{ $product->Description }}</p>
                 <h4>Price:</h4>
                 <p>{{ $product->proPrice }}</p>
-                <h4>Stok:</h4>
+                <h4>QTY:</h4>
                 <p>{{ $product->QTY }}</p>
 
                 <form action="" method="post">

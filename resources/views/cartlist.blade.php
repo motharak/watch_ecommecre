@@ -12,9 +12,9 @@
         <ul>
             @foreach ($cartDetails as $product)
                 <li>
-                    <h3>{{ $product['name'] }}</h3>
-                    <p>Price: ${{ $product['price'] }}</p>
+                    <h4>{{ $product['name'] }}</h4>
                     <img src="{{ $product['picture'] }}" alt="{{ $product['name'] }}" style="max-width: 100px;">
+                    <p>Price: ${{ $product['price'] }}</p>
                     <!-- Add more details as needed -->
 
                     <!-- Add Remove button with a form to submit a DELETE request -->
@@ -26,7 +26,7 @@
                 </li>
             @endforeach
         </ul>
-
+    <hr/>
         <p>Total: ${{ number_format($totalPrice, 2) }}</p>
 
         <button onclick="window.location.href='{{ url('/view-cart') }}'">View Cart</button>

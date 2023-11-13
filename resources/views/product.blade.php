@@ -22,7 +22,7 @@
 							<div class="new-arrival-cart">
 								<p>
 									<span class="lnr lnr-cart"></span>
-									<a href="#">add <span>to </span> cart</a>
+									<a href="{{ url('/add-to-cart/') }}/{{$product->proId}}">add <span>to </span> cart</a>
 								</p>
 								<p class="arrival-review pull-right">
 									<span class="lnr lnr-heart"></span>

@@ -112,7 +112,7 @@
 				                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 				                    <i class="fa fa-bars"></i>
 				                </button>
-				                <a class="navbar-brand" href="index.html">sine<span>mkt</span>.</a>
+				                <a class="navbar-brand" href="index.html">Jewelry<span>Shop</span>.</a>
 
 				            </div><!--/.navbar-header-->
 				            <!-- End Header Navigation -->
@@ -220,7 +220,7 @@
 								</div><!--/.hm-foot-title-->
 								<div class="hm-foot-menu">
 									<ul>
-										<li><a href="#">my cart</a></li><!--/li-->
+										<li><a href="">my cart</a></li><!--/li-->
 									</ul><!--/ul-->
 								</div><!--/.hm-foot-menu-->
 							</div><!--/.hm-footer-widget-->
