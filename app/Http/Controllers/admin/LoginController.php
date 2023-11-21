@@ -31,7 +31,8 @@ class LoginController extends Controller{
             $request->session()->put('picture', $proPic);
             return redirect('admin/dashboard');
         } else {
-            return redirect('/admin/login')->with('message', 'Fail to login');
+            return redirect('/admin/login')
+            ->withErrors(['loginError' => 'Invalid login credentials']);
         }
     }
     

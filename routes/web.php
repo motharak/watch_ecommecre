@@ -66,3 +66,8 @@ Route::get('/admin/product/delete/{id}/{img}', 'App\Http\Controllers\Admin\Produ
 Route::get('/admin/users/delete/{id}/{img}','App\Http\Controllers\admin\UserController@delete');
 Route::get('/admin/category/delete/{id}/{img}','App\Http\Controllers\admin\CategoryController@delete');
 
+Route::group(['middleware' => 'check_username'], function () {
+    // Routes that should be restricted for 'demo' user go here
+    Route::get('/restricted-route', 'RestrictedController@index');
+    // Add, edit, delete routes...
+});
