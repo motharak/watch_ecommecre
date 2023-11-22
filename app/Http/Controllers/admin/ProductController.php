@@ -6,6 +6,8 @@ use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoryController;
 use App\Models\CategoryModel;
+use App\Http\Controllers\Admin\file;
+
 
 class ProductController extends Controller
 {
@@ -124,7 +126,8 @@ class ProductController extends Controller
         }
         $productModel = new ProductModel();
         $productModel->deleteProduct($id);
-        @unlink(public_path('uploads/' . $picture));
+        $image = public_path('uploads/' . $picture);
+        @unlink($image);
         return redirect('/admin/product');
     }
     

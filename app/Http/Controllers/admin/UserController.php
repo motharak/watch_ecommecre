@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 use App\Models\UserModel;
-
+use Illuminate\Support\Collection;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller{
     private $userObj;
+
     public function __construct()
     {
         $this->userObj = new UserModel();
@@ -30,6 +31,7 @@ class UserController extends Controller{
         if (empty(session('username'))) {
             return redirect('/admin/login');
         }
+
         $userModels = new UserModel();
         $user = $userModels->getUser();
         return view('admin.users.add', ['user' => $user]);
@@ -39,6 +41,10 @@ class UserController extends Controller{
             session_start();
             if (empty(session('username'))) {
                 return redirect('/admin/login');
+            }
+            elseif(session('username','demo')){
+                session()->flash('demo', 'only view not allow to add.');
+                return redirect('/admin/users');
             }
             $txtName = $request->input('name');
             $txtRole = $request->input('role');
@@ -58,9 +64,17 @@ class UserController extends Controller{
                 'password' => $txtPassword,
                 'Picture' => $fileName,
             ];
-            $productModel = new UserModel();
-            $productModel->addUser($data);
-            return redirect('/admin/users');
+            $checkemail = new UserModel();
+            $checkemail->checkemail($txtEmail);
+            var_dump($checkemail);
+            if(!$checkemail){
+                $productModel = new UserModel();
+                $productModel->addUser($data);
+                return redirect('/admin/users');
+            }
+            else{
+                return redirect('/admin/users/add')->withErrors(['addAlrady' => 'Email alrady used to create'])->withInput();
+            }
         }
     public function edit($id){
 
@@ -77,6 +91,10 @@ class UserController extends Controller{
         session_start();
         if (empty(session('username'))) {
             return redirect('/admin/login');
+        }
+        elseif(session('username','demo')){
+            session()->flash('demo', 'only view not allow to edit.');
+            return redirect('/admin/users');
         }
 
         $id = $request->input('hiddenId');
@@ -110,6 +128,10 @@ class UserController extends Controller{
         session_start();
         if (empty(session('username'))) {
             return redirect('/admin/login');
+        }
+        elseif(session('username','demo')){
+            session()->flash('demo', 'only view not allow to delete.');
+            return redirect('/admin/users');
         }
         
         $userModel = new UserModel();

@@ -5,6 +5,11 @@
 
 
 <div class="bg-light rounded h-100 p-5">
+                            @if(session('demo'))
+                                <div class="alert alert-danger">
+                                    {{ session('demo') }}
+                                </div>
+                            @endif
                             <button onclick="window.location.href = '{{ route('add.user') }}';" class='btn btn-outline-info m-2  float-end'>Add</button>
                             <h2 class="mb-4 ">User Table</h2>
                             

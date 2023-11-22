@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class UserModel {
     public function getUser(){
@@ -17,6 +18,10 @@ class UserModel {
     // {
     //     return DB::table("caterories")->insert($data);
     // }
+    public function checkemail($email){
+        $user = DB::table("user")->where("email", $email)->first();
+        return $user;
+    }
     function getUserLogin($username, $password)
     {
         $user = DB::table('user')
