@@ -8,7 +8,7 @@
 
 <h2 class="text-center mb-5">Add Product</h2>
 
-<form method="POST" action="/admin/product/add_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('addproduct.action')}}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="name">Name</label>

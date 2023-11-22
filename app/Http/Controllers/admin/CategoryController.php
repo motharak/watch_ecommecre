@@ -41,8 +41,8 @@ class CategoryController extends Controller
             return redirect('/admin/login');
         }
         elseif(session('username')=='demo@fake.com'){
-            session()->flash('demo', 'only view not allow to delete.');
-            return redirect('/admin/users');
+            session()->flash('demo', 'only view not allow to add.');
+            return redirect('/admin/category');
         }
         $txtTitle = $request->input('name');
         $txtDescription = $request->input('description');
@@ -73,8 +73,8 @@ class CategoryController extends Controller
         if (empty(session('username'))) {
             return redirect('/admin/login');
         }elseif(session('username')=='demo@fake.com'){
-            session()->flash('demo', 'only view not allow to delete.');
-            return redirect('/admin/users');
+            session()->flash('demo', 'only view not allow to edit.');
+            return redirect('/admin/category');
         }
         $txtId = $request->input('hiddenId');
         $txtTitle = $request->input('name');
@@ -102,7 +102,7 @@ class CategoryController extends Controller
         }
         elseif(session('username')=='demo@fake.com'){
             session()->flash('demo', 'only view not allow to delete.');
-            return redirect('/admin/users');
+            return redirect('/admin/category');
         }
         $productModel = new CategoryModel();
         $productModel->deleteCategory($id);

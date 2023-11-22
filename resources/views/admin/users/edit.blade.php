@@ -8,7 +8,7 @@
 
 <h2 class="text-center mb-5">Edit Users</h2>
 
-<form method="POST" action="/admin/users/update_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('user.update')}}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="hiddenId" value="{{$user->ID}}" />
     <div class="form-group">

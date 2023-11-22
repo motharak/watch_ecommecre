@@ -51,8 +51,8 @@ class ProductController extends Controller
             return redirect('/admin/login');
         }
         elseif(session('username')=='demo@fake.com'){
-            session()->flash('demo', 'only view not allow to delete.');
-            return redirect('/admin/users');
+            session()->flash('demo', 'only view not allow to add.');
+            return redirect('/admin/product');
         }
 
         $txtTitle = $request->input('name');
@@ -95,8 +95,8 @@ class ProductController extends Controller
             return redirect('/admin/login');
         }
         elseif(session('username')=='demo@fake.com'){
-            session()->flash('demo', 'only view not allow to delete.');
-            return redirect('/admin/users');
+            session()->flash('demo', 'only view not allow to edit.');
+            return redirect('/admin/product');
         }
 
         $txtId = $request->input('hiddenId');
@@ -132,12 +132,14 @@ class ProductController extends Controller
         }
         elseif(session('username')=='demo@fake.com'){
             session()->flash('demo', 'only view not allow to delete.');
-            return redirect('/admin/users');
+            return redirect('/admin/product');
         }
-        $productModel = new ProductModel();
-        $productModel->deleteProduct($id);
-        @unlink(public_path('uploads\\' . $picture));
-        return redirect('/admin/product');
+        if(!empty(session('username'))){
+            $productModel = new ProductModel();
+            $productModel->deleteProduct($id);
+            @unlink(public_path('uploads\\' . $picture));
+            return redirect('/admin/product');
+        }
     }
     
    

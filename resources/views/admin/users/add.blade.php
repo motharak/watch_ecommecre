@@ -7,7 +7,7 @@
 
 <h2 class="text-center mb-5">Create New Users</h2>
 
-<form method="POST" action="/admin/users/add_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('add.action')}}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="name">Name</label>

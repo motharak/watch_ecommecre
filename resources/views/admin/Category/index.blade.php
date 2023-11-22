@@ -28,14 +28,14 @@
                                     </thead>
                                     <tbody>
                                     @foreach ($categories as $category)
-                                        
-                                    
                                         <tr>
                                             <th  scope="row" class="align-middle">{{$category->categoryNo}}</th>
                                             <td class="align-middle">{{$category->categoryName}}</td>
                                             <td class="align-middle">{{$category->Desription}}</td>
                                             <td class="align-middle"><img src='{{ asset('uploads/' . $category->Picture) }}' width='100' height='100'></td>
-                                            <td class="align-middle"><button class='btn btn-outline-info m-2'><a href="/admin/category/edit/{{$category->categoryNo}}">Edit</a></button> <button class='btn btn-outline-danger m-2'><a href="/admin/category/delete/{{$category->categoryNo}}/{{$category->Picture}}">Delete</a></button></td>
+                                            <td class="align-middle">
+                                            <button class='btn btn-outline-info m-2'><a href="{{route('edit.category',['id'=>$category->categoryNo])}}">Edit</a></button>
+                                            <button class='btn btn-outline-danger m-2'><a href="{{route('delete.category',['id'=>$category->categoryNo,'img'=>$category->Picture])}}">Delete</a></button></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

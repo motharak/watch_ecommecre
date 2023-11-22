@@ -49,22 +49,22 @@ Route::get('/admin/logout_action','App\Http\Controllers\admin\LoginController@lo
 
 #admin CRUD
 Route::get('/admin/category/add', 'App\Http\Controllers\admin\CategoryController@add')->name('add.category');
-Route::post('/admin/category/add_action','App\Http\Controllers\admin\CategoryController@addAction');
+Route::post('/admin/category/add_action','App\Http\Controllers\admin\CategoryController@addAction')->name('addcartegory.action');
 Route::get('/admin/users/add', 'App\Http\Controllers\admin\UserController@add')->name('add.user');
-Route::post('/admin/users/add_action','App\Http\Controllers\admin\UserController@addAction');
+Route::post('/admin/users/add_action','App\Http\Controllers\admin\UserController@addAction')->name('adduser.action');
 Route::get('/admin/product/add', 'App\Http\Controllers\admin\ProductController@add')->name('add.product');
-Route::post('/admin/product/add_action','App\Http\Controllers\admin\ProductController@addAction');
+Route::post('/admin/product/add_action','App\Http\Controllers\admin\ProductController@addAction')->name('addproduct.action');
 
 Route::get('/admin/users/edit/{id}','App\Http\Controllers\admin\UserController@edit')->name('edit.user');
-Route::post('/admin/users/update_action','App\Http\Controllers\admin\UserController@updateAction');
+Route::post('/admin/users/update_action','App\Http\Controllers\admin\UserController@updateAction')->name('user.update');
 Route::get('/admin/category/edit/{id}','App\Http\Controllers\admin\CategoryController@edit')->name('edit.category');
-Route::post('/admin/category/update_action','App\Http\Controllers\admin\CategoryController@updateAction');
+Route::post('/admin/category/update_action','App\Http\Controllers\admin\CategoryController@updateAction')->name('category.update');
 Route::get('/admin/product/edit/{id}','App\Http\Controllers\admin\ProductController@edit')->name('edit.product');
-Route::post('/admin/product/update_action','App\Http\Controllers\admin\ProductController@updateAction');
+Route::post('/admin/product/update_action','App\Http\Controllers\admin\ProductController@updateAction')->name('product.update');
 
-Route::get('/admin/product/delete/{id}/{img}', 'App\Http\Controllers\Admin\ProductController@delete');
+Route::get('/admin/product/delete/{id}/{img}', 'App\Http\Controllers\admin\ProductController@delete')->name('delete.product');
 Route::get('/admin/users/delete/{id}/{img}','App\Http\Controllers\admin\UserController@delete')->name('deleteUser');
-Route::get('/admin/category/delete/{id}/{img}','App\Http\Controllers\admin\CategoryController@delete');
+Route::get('/admin/category/delete/{id}/{img}','App\Http\Controllers\admin\CategoryController@delete')->name('delete.category');
 
 Route::group(['middleware' => 'check_username'], function () {
     // Routes that should be restricted for 'demo' user go here
