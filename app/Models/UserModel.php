@@ -25,6 +25,10 @@ class UserModel {
             ->first();
         return $user;
     }
+    public function checkemail($email){
+        $user = DB::table("user")->where("email", $email)->first();
+        return $user;
+    }
     function getPic($user)
     {
         $Picture = DB::table('user')

@@ -8,7 +8,7 @@
 
 <h2 class="text-center mb-5">Edit Product</h2>
 
-<form method="POST" action="/admin/product/update_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('product.update')}}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="hiddenId" value="{{$product->proId}}" />
     <div class="form-group">

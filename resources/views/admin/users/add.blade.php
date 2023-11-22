@@ -7,7 +7,7 @@
 
 <h2 class="text-center mb-5">Create New Users</h2>
 
-<form method="POST" action="/admin/users/add_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('add.action')}}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="name">Name</label>
@@ -55,11 +55,12 @@
     <div class="form-group">
         <label for="email">email</label>
         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="User email" value="{{ old('email') }}">
-        @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+
+        @if ($errors->has('addAlrady'))
+                            <div class="alert alert-danger my-2" role="alert">
+                                {{ $errors->first('addAlrady') }}
+                            </div>
+        @endif
     </div>
     <div class="form-group">
         <label for="password">Password</label>

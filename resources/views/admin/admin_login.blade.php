@@ -11,7 +11,7 @@
         </div>
         <!-- Spinner End -->
 
-        <form method="post" action="/admin/login_action">
+        <form method="post" action="{{route('loginAc')}}">
         @csrf
         <!-- Sign In Start -->
         <div class="container-fluid">
@@ -22,6 +22,7 @@
                             <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DASHMIN</h3>
                             </a>
+                            
                             <h3>Sign In</h3>
                         </div>
                         <div class="form-floating mb-3">
@@ -37,9 +38,22 @@
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
+                            
                             <a href="">Forgot Password</a>
                         </div>
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="btnLogin" value="Login">Sign In</button>
+                        <!-- resources/views/auth/login.blade.php -->
+
+                        <!-- ... existing code ... -->
+
+                        @if ($errors->has('loginError'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ $errors->first('loginError') }}
+                            </div>
+                        @endif
+
+                        <!-- ... existing code ... -->
+
                         <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
                         
                     </div>

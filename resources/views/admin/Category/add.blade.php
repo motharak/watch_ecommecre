@@ -7,7 +7,7 @@
 
 <h2 class="text-center mb-5">Create New Category</h2>
 
-<form method="POST" action="/admin/category/add_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('addcartegory.action')}}" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <label for="name">CategoryName</label>

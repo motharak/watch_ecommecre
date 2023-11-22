@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller{
     public function index(){
-    return view("admin/admin_login");
+    return view("/admin/admin_login");
     }
     public function loginAction(Request $request)
     {
@@ -29,9 +29,10 @@ class LoginController extends Controller{
             $value = $loginUser->email;
             $request->session()->put('username', $value);
             $request->session()->put('picture', $proPic);
-            return redirect('admin/dashboard');
+            return redirect()->route('dashboard');
         } else {
-            return redirect('/admin/login')->with('message', 'Fail to login');
+            return redirect()->route('logout')
+            ->withErrors(['loginError' => 'Invalid login credentials']);
         }
     }
     

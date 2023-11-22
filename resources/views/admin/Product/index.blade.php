@@ -3,9 +3,14 @@
 
 @section('content')
 
-
+    
 
     <div class="row">
+    @if(session('demo'))
+        <div class="alert alert-danger mx-4 mr-4">
+            {{ session('demo') }}
+        </div>
+    @endif
         <div class="col-lg-12">
         
             <div class="card">
@@ -44,8 +49,8 @@
                                         <td>{{ $product->QTY }}</td>
                                         <td><img src='{{ asset('uploads/' . $product->Picture) }}' height="100" width="100"></td>
                                         <td>
-                                            <a href="/admin/product/edit/{{$product->proId}}" class="btn btn-sm btn-warning">Edit</a>
-                                            <a href="/admin/product/delete/{{$product->proId}}/{{$product->Picture}}" class="btn btn-sm btn-danger">Delete</a>
+                                            <a href="{{route('edit.product',['id'=>$product->proId])}}" class="btn btn-sm btn-warning">Edit</a>
+                                            <a href="{{route('delete.product',['id'=>$product->proId,'img'=>$product->Picture])}}" class="btn btn-sm btn-danger">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach

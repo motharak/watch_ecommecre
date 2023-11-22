@@ -7,7 +7,7 @@
 
 <h2 class="text-center mb-5">Edit Category</h2>
 
-<form method="POST" action="/admin/category/update_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('category.update')}}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="hiddenId" value="{{$category->categoryNo}}" />
     <div class="form-group">

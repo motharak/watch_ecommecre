@@ -98,7 +98,7 @@
 </svg></i></span></a>
 				                	</li><!--/.search-->
 				                    <li class="dropdown">
-				                        <a href="/view-cart" class="dropdown-toggle" data-toggle="dropdown" >
+				                        <a href="{{route('viewCart')}}" class="dropdown-toggle" data-toggle="dropdown" >
 				                            <span class="lnr lnr-cart"></span>
 											<span class="badge badge-bg-1"></span>
 				                        </a>
@@ -121,10 +121,10 @@
 				            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
 							<ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
 								<li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
-								<li class="{{ request()->is('category*') ? 'active' : '' }}"><a href="/category">Category</a></li>
-								<li class="{{ request()->is('product*') ? 'active' : '' }}"><a href="/product">Product</a></li>
-								<li class="{{ request()->is('contact*') ? 'active' : '' }}"><a href="/contact">Contact</a></li>
-								<li class="{{ request()->is('about-us*') ? 'active' : '' }}"><a href="/about-us">About Us</a></li>
+								<li class="{{ request()->is('category*') ? 'active' : '' }}"><a href="{{route('category')}}">Category</a></li>
+								<li class="{{ request()->is('product*') ? 'active' : '' }}"><a href="{{route('product')}}">Product</a></li>
+								<li class="{{ request()->is('contact*') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact</a></li>
+								<li class="{{ request()->is('about-us*') ? 'active' : '' }}"><a href="{{route('about-us')}}">About Us</a></li>
 							</ul>
 						</div>
 

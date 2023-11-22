@@ -47,7 +47,7 @@
 										<div class="col-sm-5">
 											<div class="single-welcome-hero">
 												<div class="welcome-hero-img">
-													<img src="assets/images/1 (2).png" alt="slider image">
+													<img src="assets/images/1 (2).jpg" alt="slider image">
 												</div><!--/.welcome-hero-txt-->
 											</div><!--/.single-welcome-hero-->
 										</div><!--/.col-->

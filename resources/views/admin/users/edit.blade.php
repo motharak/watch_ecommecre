@@ -8,7 +8,7 @@
 
 <h2 class="text-center mb-5">Edit Users</h2>
 
-<form method="POST" action="/admin/users/update_action" enctype="multipart/form-data">
+<form method="POST" action="{{route('user.update')}}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="hiddenId" value="{{$user->ID}}" />
     <div class="form-group">
@@ -57,11 +57,11 @@
     <div class="form-group">
         <label for="email">email</label>
         <input type="email" name="email" id="email" {{$user->email}} class="form-control @error('email') is-invalid @enderror" placeholder="User email" >
-        @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+        @if ($errors->has('addAlrady'))
+                <div class="alert alert-danger my-2" role="alert">
+                    {{ $errors->first('addAlrady') }}
+                </div>
+        @endif
     </div>
     <div class="form-group">
         <label for="password">Password</label>
