@@ -57,11 +57,11 @@
     <div class="form-group">
         <label for="email">email</label>
         <input type="email" name="email" id="email" {{$user->email}} class="form-control @error('email') is-invalid @enderror" placeholder="User email" >
-        @error('email')
-            <span class="invalid-feedback" role="alert">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
+        @if ($errors->has('addAlrady'))
+                <div class="alert alert-danger my-2" role="alert">
+                    {{ $errors->first('addAlrady') }}
+                </div>
+        @endif
     </div>
     <div class="form-group">
         <label for="password">Password</label>

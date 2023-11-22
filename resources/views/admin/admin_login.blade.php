@@ -11,7 +11,7 @@
         </div>
         <!-- Spinner End -->
 
-        <form method="post" action="/admin/login_action">
+        <form method="post" action="{{route('loginAc')}}">
         @csrf
         <!-- Sign In Start -->
         <div class="container-fluid">

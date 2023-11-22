@@ -42,7 +42,7 @@ class UserController extends Controller{
             if (empty(session('username'))) {
                 return redirect('/admin/login');
             }
-            elseif(session('username','demo')){
+            elseif(session('username')=='demo@fake.com'){
                 session()->flash('demo', 'only view not allow to add.');
                 return redirect('/admin/users');
             }
@@ -54,7 +54,6 @@ class UserController extends Controller{
             $txtPassword = $request->input('password');
             $file = $request->file('file');
             $fileName = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads'), $fileName);
             $data = [
                 'name' => $txtName,
                 'role' => $txtRole,
@@ -67,7 +66,8 @@ class UserController extends Controller{
             $checkemail = new UserModel();
             $checkemail->checkemail($txtEmail);
             var_dump($checkemail);
-            if(!$checkemail){
+            if($checkemail){
+                $file->move(public_path('uploads'), $fileName);
                 $productModel = new UserModel();
                 $productModel->addUser($data);
                 return redirect('/admin/users');
@@ -92,7 +92,7 @@ class UserController extends Controller{
         if (empty(session('username'))) {
             return redirect('/admin/login');
         }
-        elseif(session('username','demo')){
+        elseif(session('username')=='demo@fake.com'){
             session()->flash('demo', 'only view not allow to edit.');
             return redirect('/admin/users');
         }
@@ -119,9 +119,16 @@ class UserController extends Controller{
             $file->move(public_path('uploads'), $fileName);
             $data['Picture'] = $fileName;
         }
-        $updateUser = new UserModel();
-        $updateUser->update($id,$data);
-        return redirect('/admin/users');
+        $checkemail = new UserModel();
+        $checkemail->checkemail($txtEmail);
+        if($checkemail){
+            $updateUser = new UserModel();
+            $updateUser->update($id,$data);
+            return redirect('/admin/users');
+        }
+        else{
+            return redirect('/admin/users/add')->withErrors(['addAlrady' => 'Email already used '])->withInput();
+        }
     }
     public function delete($id, $picture)
     {
@@ -129,14 +136,14 @@ class UserController extends Controller{
         if (empty(session('username'))) {
             return redirect('/admin/login');
         }
-        elseif(session('username','demo')){
+        elseif(session('username')=='demo@fake.com'){
             session()->flash('demo', 'only view not allow to delete.');
             return redirect('/admin/users');
         }
         
         $userModel = new UserModel();
         $userModel->deleteUser($id);
-        @unlink(public_path('uploads/' . $picture));
+        @unlink(public_path('uploads\\' . $picture));
         return redirect('/admin/users');
     }
 }

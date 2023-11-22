@@ -3,9 +3,14 @@
 
 @section('content')
 
-
+    
 
     <div class="row">
+    @if(session('demo'))
+        <div class="alert alert-danger">
+            {{ session('demo') }}
+        </div>
+    @endif
         <div class="col-lg-12">
         
             <div class="card">

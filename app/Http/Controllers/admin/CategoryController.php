@@ -21,7 +21,7 @@ class CategoryController extends Controller
             return redirect('/admin/login');
         }
         $cateogries = $this->categoryObj->getCategories();
-        return view("admin.category.index", ['categories' => $cateogries]);
+        return view(".admin.Category.index", ['categories' => $cateogries]);
     }
 
     public function add()
@@ -32,13 +32,17 @@ class CategoryController extends Controller
         }
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->getCategories();
-        return view('admin.category.add', ['categories' => $categories]);
+        return view('.admin.Category.add', ['categories' => $categories]);
     }
     public function addAction(Request $request)
     {
         session_start();
         if (empty(session('username'))) {
             return redirect('/admin/login');
+        }
+        elseif(session('username')=='demo@fake.com'){
+            session()->flash('demo', 'only view not allow to delete.');
+            return redirect('/admin/users');
         }
         $txtTitle = $request->input('name');
         $txtDescription = $request->input('description');
@@ -61,13 +65,16 @@ class CategoryController extends Controller
             return redirect('/admin/login');
         }
         $category = $this->categoryObj->findCategoryById($id);
-        return view('admin.category.edit', ['category'=> $category]);
+        return view('admin.Category.edit', ['category'=> $category]);
         
     }
     public function updateAction(Request $request){
         session_start();
         if (empty(session('username'))) {
             return redirect('/admin/login');
+        }elseif(session('username')=='demo@fake.com'){
+            session()->flash('demo', 'only view not allow to delete.');
+            return redirect('/admin/users');
         }
         $txtId = $request->input('hiddenId');
         $txtTitle = $request->input('name');
@@ -93,9 +100,13 @@ class CategoryController extends Controller
         if (empty(session('username'))) {
             return redirect('/admin/login');
         }
+        elseif(session('username')=='demo@fake.com'){
+            session()->flash('demo', 'only view not allow to delete.');
+            return redirect('/admin/users');
+        }
         $productModel = new CategoryModel();
         $productModel->deleteCategory($id);
-        @unlink(public_path('uploads/' . $picture));
+        @unlink(public_path('uploads\\' . $picture));
         return redirect('/admin/product');
     }
     

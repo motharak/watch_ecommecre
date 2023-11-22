@@ -31,18 +31,18 @@ Route::get('/product/{CategoryName}', 'App\Http\Controllers\ProductController@pr
 
 
 Route::get('/add-to-cart/{productId}', [CartlistController::class, 'addToCart']);
-Route::get('/view-cart', [CartlistController::class, 'viewCart']);
+Route::get('/view-cart', [CartlistController::class, 'viewCart'])->name('viewCart');
 Route::delete('/remove-from-cart/{productId}', [CartlistController::class, 'removeFromCart'])->name('remove-from-cart');
 #admin
-Route::get('/admin/login','App\Http\Controllers\admin\LoginController@index');
+Route::get('/admin/login','App\Http\Controllers\admin\LoginController@index')->name('login');
 
 Route::get('/admin/dashboard','App\Http\Controllers\admin\DashboardController@index')->name('dashboard');
-Route::get('/admin/category', 'App\Http\Controllers\admin\CategoryController@index');
-Route::get('/admin/users', 'App\Http\Controllers\admin\UserController@index');
+Route::get('/admin/category', 'App\Http\Controllers\admin\CategoryController@index')->name('adminCategory');
+Route::get('/admin/users', 'App\Http\Controllers\admin\UserController@index')->name('adminUser');
 Route::get('/admin/product', 'App\Http\Controllers\admin\ProductController@index');
 
-Route::post('/admin/login_action', 'App\Http\Controllers\admin\LoginController@loginAction');
-Route::get('/admin/logout_action','App\Http\Controllers\admin\LoginController@logoutAction');
+Route::post('/admin/login_action', 'App\Http\Controllers\admin\LoginController@loginAction')->name('loginAc');
+Route::get('/admin/logout_action','App\Http\Controllers\admin\LoginController@logoutAction')->name('logout');
 
 
 
@@ -63,7 +63,7 @@ Route::get('/admin/product/edit/{id}','App\Http\Controllers\admin\ProductControl
 Route::post('/admin/product/update_action','App\Http\Controllers\admin\ProductController@updateAction');
 
 Route::get('/admin/product/delete/{id}/{img}', 'App\Http\Controllers\Admin\ProductController@delete');
-Route::get('/admin/users/delete/{id}/{img}','App\Http\Controllers\admin\UserController@delete');
+Route::get('/admin/users/delete/{id}/{img}','App\Http\Controllers\admin\UserController@delete')->name('deleteUser');
 Route::get('/admin/category/delete/{id}/{img}','App\Http\Controllers\admin\CategoryController@delete');
 
 Route::group(['middleware' => 'check_username'], function () {

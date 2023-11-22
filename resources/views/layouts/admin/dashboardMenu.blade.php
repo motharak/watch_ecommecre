@@ -15,8 +15,8 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{{url('/admin/dashboard')}}" class="nav-item nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{url('/admin/users')}}" class="nav-item nav-link {{request()->is('admin/users') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Users</a>
-                    <a href="{{url('/admin/category')}}" class="nav-item nav-link {{ request()->is('admin/category') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Category</a>
+                    <a href="{{route('adminUser')}}" class="nav-item nav-link {{request()->is('admin/users') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Users</a>
+                    <a href="{{route('adminCategory')}}" class="nav-item nav-link {{ request()->is('admin/category') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Category</a>
                     <a href="{{url('/admin/product')}}" class="nav-item nav-link {{ request()->is('admin/product') ? 'active' : '' }}"><i class="fa fa-th me-2"></i>Product</a>
                 </div>
             </nav>

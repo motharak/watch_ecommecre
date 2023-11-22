@@ -6,8 +6,6 @@ use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoryController;
 use App\Models\CategoryModel;
-use App\Http\Controllers\Admin\file;
-
 
 class ProductController extends Controller
 {
@@ -29,7 +27,7 @@ class ProductController extends Controller
 
         $products = $this->productObj->getProduct();
         $cateogries = $this->categoryObj->getCategories();
-        return view("admin.product.index", ['products' => $products],['categories' => $cateogries]);
+        return view("admin.Product.index", ['products' => $products],['categories' => $cateogries]);
     }
 
     public function add()
@@ -44,13 +42,17 @@ class ProductController extends Controller
         $products = $productModel->getProduct();
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->getCategories();
-        return view('admin.product.add', ['products' => $products],['categories' => $categories]);
+        return view('admin.Product.add', ['products' => $products],['categories' => $categories]);
     }
     public function addAction(Request $request)
     {
         session_start();
         if (empty(session('username'))) {
             return redirect('/admin/login');
+        }
+        elseif(session('username')=='demo@fake.com'){
+            session()->flash('demo', 'only view not allow to delete.');
+            return redirect('/admin/users');
         }
 
         $txtTitle = $request->input('name');
@@ -84,13 +86,17 @@ class ProductController extends Controller
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->getCategories();
         $product = $this->productObj->findProductById($id);
-        return view('admin.product.edit', ['product'=> $product],['categories' => $categories]);
+        return view('admin.Product.edit', ['product'=> $product],['categories' => $categories]);
     }
     public function updateAction(Request $request){
 
         session_start();
         if (empty(session('username'))) {
             return redirect('/admin/login');
+        }
+        elseif(session('username')=='demo@fake.com'){
+            session()->flash('demo', 'only view not allow to delete.');
+            return redirect('/admin/users');
         }
 
         $txtId = $request->input('hiddenId');
@@ -124,10 +130,13 @@ class ProductController extends Controller
         if (empty(session('username'))) {
             return redirect('/admin/login');
         }
+        elseif(session('username')=='demo@fake.com'){
+            session()->flash('demo', 'only view not allow to delete.');
+            return redirect('/admin/users');
+        }
         $productModel = new ProductModel();
         $productModel->deleteProduct($id);
-        $image = public_path('uploads/' . $picture);
-        @unlink($image);
+        @unlink(public_path('uploads\\' . $picture));
         return redirect('/admin/product');
     }
     

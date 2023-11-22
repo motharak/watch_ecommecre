@@ -40,7 +40,7 @@
                                             <td class="align-middle">{{$person->email}}</td>
                                             {{-- <td class="align-middle">{{$person->password}}</td> --}}
                                             <td class="align-middle"><img src='{{ asset('uploads/' . $person->Picture) }}' width='100' height='100'></td>
-                                            <td class="align-middle"><button  class='btn btn-outline-info m-2'><a href='/admin/users/edit/{{$person->ID}}'>Edit</a></button> <button class='btn btn-outline-danger m-2'><a href='/admin/users/delete/{{$person->ID}}/{{$person->Picture}}'>Delete</a></button></td>
+                                            <td class="align-middle"><button  class='btn btn-outline-info m-2'><a href='{{route('edit.user',["id"=>$person->ID])}}'>Edit</a></button> <button class='btn btn-outline-danger m-2'><a href='{{route('deleteUser',["id"=>$person->ID,"img"=>$person->Picture])}}'>Delete</a></button></td>
                                         </tr>
                                         {{-- onclick="window.location.href = '{{ route('edit.user') }}';'/{{ $person->ID}}'" --}}
                                     @endforeach
